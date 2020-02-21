@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from 'logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -30,22 +30,28 @@ updateInput1 = (event) => {
   }
 }
 
+emptyForm = (event) => {
+  this.setState( {
+    testingVar: ''
+  })
+}
+
 render() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="logo192.png" className="App-logo" alt="logo" />
       </header>
       <content>
         <div className="input1-wrapper">
-          <label className="title">This is a test form (no numbers allowed)</label>
+          <label className="title">This is a test input (no numbers allowed)</label>
 
           {this.state.errorMessage ? 
           (
-          <div className="error-message">NO numbers allowed in this form!</div>
+          <div className="error-message">NO numbers allowed!</div>
           ) : null }
 
-          <input type="text" value={this.state.testingVar} onChange={this.updateInput1} />
+          <input type="text" onClick={this.emptyForm} value={this.state.testingVar} onChange={this.updateInput1} />
         </div>
       </content>
       <p className="content-value">Content Entered: <span>{this.state.testingVar}</span></p>
